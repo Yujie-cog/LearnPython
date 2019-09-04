@@ -1,0 +1,11 @@
+def product(*args):
+            p = 1
+            for x in args:
+                p = x * p
+            return p
+
+
+s1 = 75
+s2 = 85
+r = 100*(s2-s1)/s2
+print('%3:.1f%%'%r)
