@@ -1,0 +1,67 @@
+#(1)
+def triangles():
+    index = 1
+    p = [1,1]
+    while True:
+        if index == 1:
+            yield [1]
+        elif index == 2:
+            yield [1,1]
+        else:
+            p = [1] + [p[i-1]+p[i]for i in range(1,index-1)] + [1]
+            yield p
+        index += 1
+
+n = 0
+results = []
+for t in triangles():
+    results.append(t)
+    n = n + 1
+    if n == 10:
+        break
+
+for t in results:
+    print(t)
+    
+#(2)我最初写的
+# -*- coding: utf-8 -*-
+
+def triangles(n):
+    if n == 1:
+        yield [1]
+    elif n==2:
+        yield [1,1]
+    else:
+        i = 3
+        O = [1,1]
+        N = [1,1]
+        while i <= n:
+            for x in range(1,i-1):
+                N[x] = O[x-1] + O[x]
+            N.append(O[i-2])
+            i = i + 1
+            O = N[:]
+        yield N
+        
+    return 'done'
+#将（2）改为：?
+
+#zip
+def triangles():
+    out = [1]
+    while True:
+        yield out
+        out = [sum(i) for i in zip([0]+out,out+[0])]
+
+
+n = 0
+results = []
+for t in triangles():
+    results.append(t)
+    n = n + 1
+    if n == 10:
+        break
+
+for t in results:
+    print(t)
+
