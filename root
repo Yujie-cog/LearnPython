@@ -1,0 +1,17 @@
+#!/usr/bin/env python3
+# -*- coding: utf-8 -*-
+# root
+
+
+import math
+def quadratic(a,b,c):
+    if b*b-4*a*c >= 0 or a == 0:
+        x = (-b + math.sqrt(b*b - 4*a*c)) / (2*a)
+        y = (-b - math.sqrt(b*b - 4*a*c)) / (2*a)
+        return x,y
+    else:
+        return 'None roots of equation'
+
+a,b,c = map(int,input().split())
+
+print('quadratic(a,b,c)=',quadratic(a,b,c))
