@@ -3,3 +3,34 @@ print([k + '='+ v for k,v in d.items()])
 print([s.lower() for s in d.values()])
 d['x'] = 13
 print([x.lower() for x in d.values() if isinstance(x,str)])
+
+
+def odd():
+    print('step 1')
+    yield 1
+    print('step 2')
+    yield 3
+    print('step 3')
+    yield 5
+
+o=odd()
+print(next(o))
+print(next(o))
+
+def fib(max):
+    n, a, b = 0, 0, 1
+    while n < max:
+        yield b
+        a, b = b,a + b
+        n = n + 1
+    return 'done'
+
+
+g = fib(6)
+while True:
+    try:
+         x = next(g)
+         print('g:', x)
+    except StopIteration as e:
+         print('Generator return value:', e.value)
+         break
