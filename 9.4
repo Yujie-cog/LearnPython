@@ -1,0 +1,5 @@
+d = {'x':'A','Y':'B','z':'C'}
+print([k + '='+ v for k,v in d.items()])
+print([s.lower() for s in d.values()])
+d['x'] = 13
+print([x.lower() for x in d.values() if isinstance(x,str)])
