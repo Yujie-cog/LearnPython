@@ -1,0 +1,27 @@
+# -*- coding: utf-8 -*-
+"""
+Created on Mon Sep  9 20:01:22 2019
+
+@author: huawei
+"""
+
+#a,b,c = map(int,input().split())
+
+num=input('Please input the numbers of pictures:')
+num=int(num)
+import matplotlib.pyplot as plt
+from skimage.draw import random_shapes
+for i in range(num):
+
+    result = random_shapes((224, 224), max_shapes=1,min_size=10,max_size=224, 
+                       intensity_range=((0, 255),))
+    image, labels = result
+    fig=plt.figure()
+    plt.imshow(image, cmap='gray')    
+    plt.savefig(' No.%d.jpg'%(i+1))
+    
+import pandas as pd
+data=pd.DataFrame(i+1,labels[0][1])
+data.to_excel('F:/py/picture/data.xlsx')
+
+   
